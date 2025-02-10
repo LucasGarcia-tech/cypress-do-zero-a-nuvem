@@ -1,28 +1,118 @@
-🌲 Cypress, from Zero to the Cloud ☁️
-Sample project for the "Cypress, from Zero to the Cloud" course of the Talking About Testing online school.
+Cypress Automated Testing Project
 
-Pre-requirements
-It is required to have git, Node.js and npm installed to clone and run this project.
+📌 Overview
 
-I've used versions 2.42.1, v20.13.1 and 10.8.1 of git, Node.js and npm, respectively. I suggest you use the same or later LTS versions.
+This project contains automated tests using Cypress for web applications. The tests cover UI interactions, API validations, and end-to-end scenarios.
+
+📂 Project Structure
+
+📦 cypress-project
+├── 📁 cypress
+│   ├── 📁 fixtures        # Test data
+│   ├── 📁 integration     # Test scripts
+│   ├── 📁 plugins        # Cypress plugins
+│   ├── 📁 support        # Custom commands and utilities
+├── 📄 cypress.json       # Cypress configuration file
+├── 📄 package.json       # Dependencies and scripts
+├── 📄 README.md          # Project documentation
+
+🚀 Getting Started
+
+Prerequisites
+
+Node.js (>= 14.x)
+
+npm or yarn installed
 
 Installation
-Run npm install (or npm i for the short version) to install the dev dependencies.
 
-Tests
-In this project, you can run the tests on a desktop or mobile viewport.
+Clone the repository:
 
-Desktop
-Run npm test (or npm t for the short version) to run the test in headless mode on a desktop viewport.
+git clone https://github.com/your-repo/cypress-project.git
+cd cypress-project
 
-Or, run npm run cy:open to open the Cypress App on a desktop viewport.
+Install dependencies:
 
-Mobile
-Run npm run test:mobile to run the test in headless mode on a mobile viewport.
+npm install  # or yarn install
 
-Or, run npm run cy:open:mobile to open the Cypress App on a mobile viewport.
+Running Tests
 
-Support this project
-If you want to support this project, leave a ⭐.
+To open the Cypress Test Runner:
 
-This project was created with 💚 by Walmyr.
+npx cypress open
+
+To run tests in headless mode:
+
+npx cypress run
+
+Running Specific Tests
+
+Run a specific test file:
+
+npx cypress run --spec cypress/integration/example.spec.js
+
+📌 Writing Tests
+
+Cypress tests are written inside the cypress/integration/ folder. Example:
+
+/// <reference types="cypress" />
+
+describe('Login Test', () => {
+  it('should log in successfully', () => {
+    cy.visit('https://example.com/login');
+    cy.get('#username').type('user123');
+    cy.get('#password').type('password123');
+    cy.get('button[type=submit]').click();
+    cy.contains('Welcome, user123').should('be.visible');
+  });
+});
+
+✅ CI/CD Integration
+
+You can integrate Cypress with CI/CD pipelines like GitHub Actions, Jenkins, or GitLab CI/CD.
+
+Example GitHub Actions workflow:
+
+name: Cypress Tests
+on: [push, pull_request]
+
+jobs:
+  cypress-run:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      - name: Install dependencies
+        run: npm install
+      - name: Run Cypress tests
+        run: npx cypress run
+
+🛠 Useful Commands
+
+Command
+
+Description
+
+npx cypress open
+
+Opens the Cypress Test Runner
+
+npx cypress run
+
+Runs all tests in headless mode
+
+npx cypress run --spec <file>
+
+Runs a specific test file
+
+npx cypress run --browser chrome
+
+Runs tests in Chrome
+
+📝 Contributing
+
+Feel free to fork the project, submit issues, or open pull requests!
+
+📜 License
+
+This project is licensed under the MIT License.
