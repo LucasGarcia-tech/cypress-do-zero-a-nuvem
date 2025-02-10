@@ -1,25 +1,28 @@
-name: End-to-end tests
+name: Cypress Tests
 
-on: push
+on:  
+  push:
+    branches:
+      - main  
+  pull_request:  
+    branches:  
+      - main  
 
-jobs:
-  cypress-run:
-    runs-on: ubuntu-22.04
-    steps:
-      - name: Checkout código
-        uses: actions/checkout@v4
+jobs:  
+  cypress-run:  
+    runs-on: ubuntu-latest  
 
-      - name: Configurar Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: 18
+    steps:  
+      - name: Checkout código  
+        uses: actions/checkout@v4  
 
-      - name: Instalar dependências
-        run: npm install
+      - name: Instalar Node.js  
+        uses: actions/setup-node@v3  
+        with:  
+          node-version: 18  
 
-      - name: Rodar Cypress
-        uses: cypress-io/github-action@v6
-        with:
-          build: npm run build
-          start: npm start
-          wait-on: 'http://localhost:3000' # Substitua pela URL do seu app, se necessário
+      - name: Instalar dependências  
+        run: npm ci  
+
+      - name: Rodar Cypress  
+        run: npx cypress run  
