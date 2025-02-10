@@ -180,12 +180,12 @@ describe('Central de Atendimento ao Cliente TAT', () => {
       .and('have.attr','target','_blank')
   })
 
-  it.only('Acessa a página da política de privacidade removendo o target e então clicando no link',() =>{
+  it('Acessa a página da política de privacidade removendo o target e então clicando no link',() =>{
     cy.contains('a','Política de Privacidade')
-      .invoke('removeAttr','tagert')
+      .invoke('removeAttr','target')
       .click()
     
-    cy.contains('h1','CAT TAT - Política de Privacidade')
+    cy.contains('h1','CAC TAT - Política de Privacidade')
       .should('be.visible')
   })
 
