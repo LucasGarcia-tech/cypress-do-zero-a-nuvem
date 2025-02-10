@@ -1,28 +1,118 @@
-# 🌲 Cypress, do Zero à Nuvem ☁️
+Cypress Automated Testing Project
 
-👋 Seja bem-vindo(a)!
+📌 Overview
 
-É muito bom tê-lo(a) aqui. Tenho certeza que você vai amar esse curso. ❤️
+This project contains automated tests using Cypress for web applications. The tests cover UI interactions, API validations, and end-to-end scenarios.
 
-## O que você vai aprender?
+📂 Project Structure
 
-- Como configurar um projeto Cypress do zero
-- Como visitar páginas locais e remotas
-- Como lidar com os elementos mais comuns encontrados em aplicações web
-- Como testar upload de arquivos
-- Como realizar as mais diversas verificações de resultados esperados
-- Como criar comandos customizados
-- Como lidar com links que abrem em outra aba do navegador
-- Como rodar testes simulando as dimensões de um dispositivo móvel
-- Como resolver os mesmos problemas de diferentes formas, conhecendo a [API do Cypress](https://docs.cypress.io/api/table-of-contents)
-- Como criar uma documentação mínima para seu projeto de testes automatizados
-- Como executar os testes em um _workflow_ de integração contínua sempre que mudanças ocorrerem no código da aplicação (ou dos testes)
-- Como integrar seu _workflow_ de integração contínua com o Cypress Cloud (o serviço de gestão de testes do Cypress na nuvem)
+📦 cypress-project
+├── 📁 cypress
+│   ├── 📁 fixtures        # Test data
+│   ├── 📁 integration     # Test scripts
+│   ├── 📁 plugins        # Cypress plugins
+│   ├── 📁 support        # Custom commands and utilities
+├── 📄 cypress.json       # Cypress configuration file
+├── 📄 package.json       # Dependencies and scripts
+├── 📄 README.md          # Project documentation
 
-## Vamos começar?
+🚀 Getting Started
 
-Vá para a seção [estrutura do curso](./lessons/_course-structure_.md).
+Prerequisites
 
-___
+Node.js (>= 14.x)
 
-Este é um curso da **Escola Talking About Testing**.
+npm or yarn installed
+
+Installation
+
+Clone the repository:
+
+git clone https://github.com/your-repo/cypress-project.git
+cd cypress-project
+
+Install dependencies:
+
+npm install  # or yarn install
+
+Running Tests
+
+To open the Cypress Test Runner:
+
+npx cypress open
+
+To run tests in headless mode:
+
+npx cypress run
+
+Running Specific Tests
+
+Run a specific test file:
+
+npx cypress run --spec cypress/integration/example.spec.js
+
+📌 Writing Tests
+
+Cypress tests are written inside the cypress/integration/ folder. Example:
+
+/// <reference types="cypress" />
+
+describe('Login Test', () => {
+  it('should log in successfully', () => {
+    cy.visit('https://example.com/login');
+    cy.get('#username').type('user123');
+    cy.get('#password').type('password123');
+    cy.get('button[type=submit]').click();
+    cy.contains('Welcome, user123').should('be.visible');
+  });
+});
+
+✅ CI/CD Integration
+
+You can integrate Cypress with CI/CD pipelines like GitHub Actions, Jenkins, or GitLab CI/CD.
+
+Example GitHub Actions workflow:
+
+name: Cypress Tests
+on: [push, pull_request]
+
+jobs:
+  cypress-run:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      - name: Install dependencies
+        run: npm install
+      - name: Run Cypress tests
+        run: npx cypress run
+
+🛠 Useful Commands
+
+Command
+
+Description
+
+npx cypress open
+
+Opens the Cypress Test Runner
+
+npx cypress run
+
+Runs all tests in headless mode
+
+npx cypress run --spec <file>
+
+Runs a specific test file
+
+npx cypress run --browser chrome
+
+Runs tests in Chrome
+
+📝 Contributing
+
+Feel free to fork the project, submit issues, or open pull requests!
+
+📜 License
+
+This project is licensed under the MIT License.

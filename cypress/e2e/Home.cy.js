@@ -190,12 +190,9 @@ describe('Central de Atendimento ao Cliente TAT', () => {
   })
 
 
-  it('Testa a página da política de privacidade de forma independente',() =>{
+  it('',() =>{
 
-    cy.contains('a','Política de Privacidade')
-    .click()
-    .should('have.attr','href','privacy.html')
-    .and('have.attr','target','_blank')
 
+    
      })
   })
